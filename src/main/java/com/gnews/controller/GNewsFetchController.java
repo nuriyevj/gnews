@@ -9,10 +9,7 @@ import com.gnews.service.GNewsFetchService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "${api.prefix}/gnews-fetch")
@@ -21,7 +18,7 @@ public class GNewsFetchController {
     @Autowired
     private GNewsFetchService gNewsFetchService;
 
-    @PostMapping(value = "/getGNewsSearchData", headers = "Accept=application/json")
+    @GetMapping(value = "/getGNewsSearchData", headers = "Accept=application/json")
     public ResponseEntity<ResponseDTO<GNewsSearchRS>> getGNewsSearchData(@RequestBody GNewsSearchRQ gNewsSearchRQ) {
         ResponseDTO<GNewsSearchRS> response = new ResponseDTO<>();
         HttpStatus httpStatus;
